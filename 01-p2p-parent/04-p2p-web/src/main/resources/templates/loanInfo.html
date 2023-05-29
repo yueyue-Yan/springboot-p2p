@@ -1,0 +1,298 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>动力金融网-CFCA认证的互联网金融公司</title>
+    <script type="text/javascript" th:src="@{/js/jquery-1.7.2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/trafficStatistics.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/share.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+</head>
+
+<body>
+<div id="header">
+<!--<jsp:include page="commons/header.jsp"/>-->
+    <div th:include="commons/header :: html"></div>
+</div>
+
+<!--散标投资 begin-->
+<div id="sbtz" class="invest-details">
+
+<!--页中begin-->
+<div class="mainBox pro-details-body">
+  <div class="homeWap clearfix" id="huacengPar">
+    <div class="pro-details-left">
+
+        <!-- 产品详情start -->
+        <div class="pro-info-details">
+            <div class="pro-name">
+                <h2><span th:text="|${loanInfo.productName} (${loanInfo.productNo}期)|">季度宝 (20170726期)</span></h2>
+            </div>
+            <div class="pro-info" >
+                <ul class="clearfix">
+                    <li class="info-1">
+                        <p>历史年化利率</p>
+                        <h3 th:text="|${loanInfo.rate}%|">4.9%</h3>
+                        <div class="info-bt">
+                            <span>本产品采用普通利率</span>
+                        </div>
+                    </li>
+                    <li class="info-2">
+                        <p>募集金额(元)</p>
+                        <h3 th:text="${loanInfo.productMoney}">500000.0</h3>
+                        <div class="info-bt">
+                            <!-- 只有状态为0时为募集，其它都为已满标 -->
+                            <span th:unless="${loanInfo.leftProductMoney eq 0}">
+                                <span th:text="|募集中,剩余募集金额 ${loanInfo.leftProductMoney}元|"></span>
+                            </span>
+                             <span th:if="${loanInfo.leftProductMoney eq 0}">
+                                  已满标
+                             </span>
+                        </div>
+                    </li>
+                    <li class="info-3">
+                        <p>投资周期</p>
+                        <!-- 只有新手宝产品周期为天 -->
+                        <h3 th:text="${loanInfo.productType eq 0 ? loanInfo.cycle + '天' : loanInfo.cycle + '个月'}">6个月</h3>
+                        <div class="info-bt"><span></span></div>
+                    </li>
+                </ul>
+            </div>
+            <dl class="pro-syfs">
+                <dt><span>收益获取方式</span></dt>
+                <dd><span>收益返还：</span>到期还本付息</dd>
+            </dl>
+        </div>
+        <!-- 产品详情end -->
+      
+      <!-- 投资记录start -->
+      <div class="pro-details-cnt">
+        <ul class="tabNav clearfix">
+          <li><a id="one3" href="javascript:void(0);" class="s">投资记录</a></li>
+        </ul>
+        
+        <div class="invest-record" id="con_one_3" style="display:block">
+        <div class="vertical-side">投资列表</div>
+            <dl class="record-list">
+                <dt>
+                    <span class="record-num">序号</span><span class="invest-user">投资人</span><span class="invest-money">投资金额(元)</span><span class="invest-time">投资时间</span>
+                </dt>
+
+                <!-- 如果投资记录为空，显示以下文字 -->
+                <dd style="text-align:center;" th:if="${#lists.isEmpty(bidInfoList)}">
+                    该产品暂时还没有人投资，赶快去投资吧~
+                </dd>
+                <!-- 如果有投资记录，循环遍历显示 -->
+                <span th:unless="${#lists.isEmpty(bidInfoList)}">
+                <span th:each="bidInfo:${bidInfoList}">
+                     <dd>
+                        <span class="record-num" th:text="${bidInfoStat.count}">1</span>
+                        <span class="invest-user" th:text="|${#strings.substring(bidInfo.user.phone,0,3)}******${#strings.substring(bidInfo.user.phone,9,11)}|">137******89</span>
+                        <span class="invest-money" th:text="${bidInfo. bidMoney}">1000.0</span>
+                        <span class="invest-time" th:text="${#dates.format(bidInfo.bidTime,'yyyy-MM-dd HH:mm:ss')}">2017-09-12 13:34:22</span>
+                     </dd>
+                </span>
+
+            </span>
+
+
+
+            </dl>
+		</div>
+      </div>
+      <!-- 投资记录end -->
+    </div>
+    
+    <!--页面右侧begin-->
+    <div class="pro-details-right">
+      <div class="right-calculator" id="huaceng">
+        <div class="calculator-cnt">
+          <h2>立即投资</h2>
+          <dl class="profits-mode">
+            <dt>收益获取方式</dt>
+            <dd class="clearfix"><span id="fanhuan"><em>到期还本付息</em></span></dd>
+          </dl>
+          <dl class="usable">
+            <dt>我的账户可用</dt>
+            <dd>资金(元)：
+                <!-- 判断用户是否登录：未登录，显示登录连接 -->
+                <span th:if="${session.session_user eq null}">
+                    <span style="font-size:18px;color:#ff6161;vertical-align:bottom;"><a th:href="@{/loan/page/login}">请登录</a></span>
+                </span>
+                <!-- 判断用户是否登录：已登录，显示可用余额 -->
+                <span th:unless="${session.session_user eq null}">
+                    <span style="font-size:18px;color:#ff6161;vertical-align:bottom;" th:text="|${#numbers.formatCurrency(availableMoney)}元|">1,000,12 元</span>
+                </span>
+            
+
+
+	        
+
+	        
+            </dd>
+          </dl>
+          <div class="expect-box">
+            <div class="expect-money">预计本息收入(元)：<span id="shouyi" class="money">xxx</span><span class="prompt" style="display:block;">请在下方输入投资金额</span></div>
+            <input type="text" id="bidMoney" name="bidMoney" onblur="checkMoney();" placeholder="请输入投资金额，应为100元的整倍数" maxlength="9"/>
+            <div class="max-invest-money"></div>
+          </div>
+          <div class="invest-btn">
+          	<a id="investNow" href="javascript:void(0)" class="btn-1" onclick="invest();">立即投资</a>
+          </div>
+            <!--type="hidden"：隐藏域-->
+          <input type="hidden" id="loanId" name="loanId" th:value="${loanInfo.id}"/>
+          <input type="hidden" id="user" name="user" th:value="${session.session_user}"/>
+          <span th:unless="${session.session_user eq null}">
+              <input type="hidden" id="userName" name="userName" th:value="${session.session_user.name}"/>
+          </span>
+
+
+
+        </div>
+      </div>
+    </div>
+    <!--页面右侧end-->
+  </div>
+</div>
+<!--页中end-->
+
+</div>
+<!--散标投资 end-->
+
+<!--遮罩层-->
+<div class="dialog-overlay" id="dialog-overlay1" style="display:none;"></div>
+
+<!--投资成功浮层start-->
+<div class="layer-body failureSuccess failurePayment" id="failurePayment" style="display:none;width:500px;height:100px;top:75%;">
+  <a class="layer-close" href="javascript:closeit();"></a>
+  <div style="background:#f2f2f2; line-height:105px;text-align:center;"><font style="font-size:25px;">投资成功</font></div>
+</div>
+<!--投资成功浮层end-->
+
+<!--页脚start-->
+<div th:include="commons/footer :: html"></div>
+<!--页脚end-->
+
+<script type="text/javascript" th:inline="javascript">
+//th:inline：内联脚本
+
+function closeit() {
+	$("#failurePayment").hide();
+	$("#dialog-overlay1").hide();
+	window.location.href="/p2p/loan/myCenter";
+}
+
+// 金额输入框失去焦点事件
+function checkMoney() {
+    var productType = [[${loanInfo.productType}]];
+    var cycle = [[${loanInfo.cycle}]];
+    var rate = [[${loanInfo.rate}]];
+    var bidMoney = $.trim($("#bidMoney").val());
+    if (bidMoney == "") {
+        //id选择器用井号#，类选择器用点.
+        $(".max-invest-money").html("请输入投资金额");
+        return false;
+    }
+    //isNaN: is not a number
+    else if (isNaN(bidMoney)) {
+        $(".max-invest-money").html("请输入合法的金额");
+        return false;
+    }
+    else if (bidMoney <= 0) {
+        $(".max-invest-money").html("投资金额不能为负数");
+        return false;
+    }
+    else if (bidMoney % 100 != 0) {
+        $(".max-invest-money").html("投资金额只能是100的整数倍");
+        return false;
+    }
+    else {
+        $(".max-invest-money").html("");
+        // 输入的金额是合法的，计算出收益
+        // 计算收益的公式：投资金额 * 日利率 * 周期(天)
+        var incomeMoney = 0;
+        if (productType == 0) {
+            // 新手宝 收益 = 投资金额 * (利率 / 365 / 100) * 周期
+            incomeMoney = bidMoney * (rate / 365 / 100) * cycle
+        } else {
+            // 散标和优选产品
+            // 计算收益的公式:投资金额 * (利率 / 365 / 100) * 周期 * 30
+            incomeMoney = bidMoney * (rate / 100 / 365) * cycle * 30
+        }
+        incomeMoney= Math.round(incomeMoney*Math.pow(10,2))/Math.pow(10,2);
+        $("#shouyi").html(incomeMoney);
+        return true;
+    }
+}
+
+// 立即投资按钮
+function invest() {
+    if (checkMoney()) {
+        // 返回true则说明通过验证
+        // 1. 必须是已登录用户
+        var user = $("#user").val();
+        var name = $("#userName").val()
+        var bidMoney = $.trim($("#bidMoney").val()); // 投资金额
+        var availableMoney = [[${availableMoney}]];  //账户余额
+        var bidMinLimit = [[${loanInfo.bidMinLimit}]];  // 当前产品每笔最小投资金额
+        var bidMaxLimit = [[${loanInfo.bidMaxLimit}]];  // 当前产品每笔最大投资金额
+        var leftProductMoney = [[${loanInfo.leftProductMoney}]]; // 剩余可头金额
+        if (user == "") {
+            // 当前没有用户登录，跳转到登录页
+            window.location.href = "/p2p/loan/page/login"
+        }
+        else if (name == "") {
+            // 当前用户没有进行实名认证，跳转到实名认证页
+            window.location.href = "/p2p/loan/page/realName"
+        }
+        else if (bidMoney > availableMoney) {
+            $(".max-invest-money").html("您的余额不足,只有"+availableMoney+"元");
+        }
+        else if (bidMoney < bidMinLimit) {
+            $(".max-invest-money").html("该产品每笔最少要投资:" + bidMinLimit + "元");
+        }
+        else if (bidMoney > bidMaxLimit) {
+            $(".max-invest-money").html("该产品每笔最多只能投资:" + bidMaxLimit + "元");
+        }
+        else if (bidMoney > leftProductMoney) {
+            $(".max-invest-money").html("该产品剩余可投资金额仅为:" + leftProductMoney + "元");
+        }
+        else {
+            $(".max-invest-money").html("");
+
+            var loanId = [[${loanInfo.id}]]; // 产品id
+
+            // 通过ajax请求后台 完成投资操作
+            $.ajax({
+                url: "/p2p/loan/invest",
+                type:"get",
+                data: {
+                    "bidMoney":bidMoney,
+                    "loanId": loanId
+                },
+                success:function (data) {
+                    if (data.code == 1) {
+                        // 投资成功
+                        $("#failurePayment").show();
+                        $("#dialog-overlay1").show();
+                        //window.location.href = "/p2p/loan/myCenter";
+                    } else {
+                        $(".max-invest-money").html("目前投资人数过多，请稍后再试");
+                    }
+                },
+                error:function () {
+                    $(".max-invest-money").html("系统繁忙，请稍后再试");
+                }
+            })
+        }
+    }
+}
+
+</script>
+</body>
+</html>

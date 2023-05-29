@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/01-p2p-parent/99bill_demo" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/01-p2p-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/01-p2p-parent/01-p2p-common/pom.xml" />
+        <option value="$PROJECT_DIR$/01-p2p-parent/03-p2p-dataservice/pom.xml" />
+        <option value="$PROJECT_DIR$/01-p2p-parent/04-p2p-web/pom.xml" />
+        <option value="$PROJECT_DIR$/01-p2p-parent/dom4j+xpath/pom.xml" />
+        <option value="$PROJECT_DIR$/01-p2p-parent/05-p2p-timer-task/pom.xml" />
+        <option value="$PROJECT_DIR$/01-p2p-parent/99bill_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/01-p2p-parent/06-p2p-pay/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

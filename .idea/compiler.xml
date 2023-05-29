@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="01-p2p-common" />
+        <module name="02-p2p-exterface" />
+        <module name="03-p2p-dataservice" />
+        <module name="04-p2p-web" />
+        <module name="05-p2p-timer-task" />
+        <module name="06-p2p-pay" />
+        <module name="99bill_demo" />
+        <module name="dom4j+xpath" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="01-p2p-common" target="1.8" />
+      <module name="01-p2p-parent" target="1.8" />
+      <module name="02-p2p-exterface" target="1.8" />
+      <module name="03-p2p-dataservice" target="1.8" />
+      <module name="04-p2p-web" target="1.8" />
+      <module name="05-p2p-timer-task" target="1.8" />
+      <module name="06-p2p-pay" target="1.8" />
+      <module name="99bill_demo" target="1.8" />
+      <module name="dom4j+xpath" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

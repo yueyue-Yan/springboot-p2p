@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--本质上是一个consumer，与04一样-->
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>01-p2p-parent</artifactId>
+        <groupId>com.work</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.work</groupId>
+    <artifactId>05-p2p-timer-task</artifactId>
+    <version>0.0.1</version>
+    <name>05-p2p-timer-task</name>
+
+    <dependencies>
+        <!-- Springboot web工程的起步依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--dubbo集成springboot的起步依赖-->
+        <dependency>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
+        <!--dubbo集成springboot时声明zookeeper为注册中心-->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+        </dependency>
+        <!--接口工程的依赖-->
+        <dependency>
+            <groupId>com.work</groupId>
+            <artifactId>02-p2p-exterface</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+
+
+</project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01-p2p-parent/01-p2p-common/01-p2p-common.iml" filepath="$PROJECT_DIR$/01-p2p-parent/01-p2p-common/01-p2p-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-p2p-parent/01-p2p-parent.iml" filepath="$PROJECT_DIR$/01-p2p-parent/01-p2p-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-p2p-parent/02-p2p-exterface/02-p2p-exterface.iml" filepath="$PROJECT_DIR$/01-p2p-parent/02-p2p-exterface/02-p2p-exterface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-p2p-parent/03-p2p-dataservice/03-p2p-dataservice.iml" filepath="$PROJECT_DIR$/01-p2p-parent/03-p2p-dataservice/03-p2p-dataservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-p2p-parent/04-p2p-web/04-p2p-web.iml" filepath="$PROJECT_DIR$/01-p2p-parent/04-p2p-web/04-p2p-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-p2p-parent/05-p2p-timer-task/05-p2p-timer-task.iml" filepath="$PROJECT_DIR$/01-p2p-parent/05-p2p-timer-task/05-p2p-timer-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-p2p-parent/06-p2p-pay/06-p2p-pay.iml" filepath="$PROJECT_DIR$/01-p2p-parent/06-p2p-pay/06-p2p-pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-p2p-parent/99bill_demo/99bill_demo.iml" filepath="$PROJECT_DIR$/01-p2p-parent/99bill_demo/99bill_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-p2p-parent/dom4j+xpath/dom4j+xpath.iml" filepath="$PROJECT_DIR$/01-p2p-parent/dom4j+xpath/dom4j+xpath.iml" />
+    </modules>
+  </component>
+</project>
